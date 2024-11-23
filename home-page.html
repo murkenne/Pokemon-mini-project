@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="home-page.js" defer></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Pokemon Mini Project</title>
+</head>
+<body>
+    <!-- Navbar for intuitive navigation using Bootstrap Navbar and Dropdown menus -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="task-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="details-page.html">Pokemon Details</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search-page.html">Search Pokemon</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jumbotron for a welcome message -->
+    <header class="jumbotron bg-primary text-white text-center p-5 mb-4">
+        <div class="container">
+            <h1 class="display-4">Pokemon</h1>
+            <p class="lead">Your unofficial home of all Pokemon</p>
+        </div>
+    </header>
+
+    <!-- Dynamic Pokemon Images -->
+    <div id="pokemon-container" class="d-flex flex-wrap justify-content-center gap-3">
+        <div id="pokemon-card-images"></div>
+    </div>    
+
+</body>
+</html>

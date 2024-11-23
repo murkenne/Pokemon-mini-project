@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #pokemon-container {
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home-page.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="details-page.html">Pokemon Details</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Form -->
+    <h1>Search Pokemon Page</h1>
+    <form id="pokemon-form">
+        <input type="text" id="pokemon-input" placeholder="Enter Pokemon name or ID" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- Container for Pokemon details -->
+    <div id="pokemon-container"></div>
+
+    <!-- JavaScript -->
+    <script src="search-page.js" defer></script>
+</body>
+</html>
