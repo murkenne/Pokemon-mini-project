@@ -3,9 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon Details page</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Pokémon Details</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .hero {
+            background: url('path-to-your-image.jpg') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 2.5em;
+        }
+
+        .details-container {
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Tablet Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 200px;
+                font-size: 2em;
+            }
+
+            .details-container h1 {
+                font-size: 2em;
+            }
+
+            .details-container img {
+                max-width: 150px;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .hero {
+                height: 150px;
+                font-size: 1.5em;
+            }
+
+            .details-container {
+                padding: 10px;
+            }
+
+            .details-container h1 {
+                font-size: 1.8em;
+            }
+
+            .details-container img {
+                max-width: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home-page.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="search-page.html">Search Pokémon</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Pokémon Details</h1>
+    </div>
+
+    <!-- Details Section -->
+    <div class="details-container">
+        <h1 id="pokemon-name">Pokémon Name</h1>
+        <img id="pokemon-image" class="img-fluid" src="#" alt="Pokémon Image">
+        <p id="pokemon-id"><strong>ID:</strong> </p>
+        <p id="pokemon-type"><strong>Type:</strong> </p>
+        <p id="pokemon-height"><strong>Height:</strong> </p>
+        <p id="pokemon-weight"><strong>Weight:</strong> </p>
+
+        <a href="search-page.html" class="btn btn-primary back-to-search">Back to Search</a>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="details-page.js" defer></script>
 </body>
 </html>

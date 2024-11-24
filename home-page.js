@@ -34,6 +34,7 @@ const handleImages = async () => {
     ]);
 
     // Dynamically update the container with names, IDs, and images
+    pokemonContainer.style.backgroundColor = "red";
     pokemonContainer.innerHTML = `
       <div style="text-align: center; margin: 10px;">
         <img src="${pokemon1.imageUrl}" alt="${pokemon1.name}" style="width:150px; height:auto;">
@@ -62,4 +63,4 @@ const updateImages = () => {
 updateImages();
 
 // Update images every 5 seconds
-setInterval(updateImages, 5000);
+setInterval(updateImages, 10000);

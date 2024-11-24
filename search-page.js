@@ -1,6 +1,14 @@
 // API Base URL
 const baseUrl = "https://pokeapi.co/api/v2/pokemon/";
 
+// Function to generate a random color
+function getRandomColor() {
+  const red = Math.floor(Math.random() * 256); // Random red (0-255)
+  const green = Math.floor(Math.random() * 256); // Random green (0-255)
+  const blue = Math.floor(Math.random() * 256); // Random blue (0-255)
+  return `rgb(${red}, ${green}, ${blue})`;
+}
+
 // Form setup
 document.getElementById("pokemon-form").addEventListener("submit", async (event) => {
   // Prevent form from reloading the page
@@ -34,7 +42,11 @@ document.getElementById("pokemon-form").addEventListener("submit", async (event)
       <p><strong>Height:</strong> ${pokemon.height / 10} m</p>
       <p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>
     `;
+
+    // Change the background color to a random color
+    document.body.style.backgroundColor = getRandomColor();
   } catch (error) {
     container.innerHTML = `<p class="error">${error.message}</p>`;
   }
 });
+
