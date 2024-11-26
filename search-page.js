@@ -13,32 +13,45 @@ function getRandomColor() {
 document.getElementById("pokemon-form").addEventListener("submit", async (event) => {
   // Prevent form from reloading the page
   event.preventDefault();
-  
+
   const input = document.getElementById("pokemon-input").value.trim().toLowerCase();
   const container = document.getElementById("pokemon-container");
-  
+
   // Clear previous results or error messages
   container.innerHTML = "";
 
   // Input validation
   if (!input) {
-    container.innerHTML = "<p class='error'>Please enter a Pokemon name or ID.</p>"; 
+    container.innerHTML = "<p class='error'>Please enter a Pokémon name or ID.</p>";
     return;
   }
 
   try {
-    // Fetch Pokemon data
+    // Fetch Pokémon data
     const response = await fetch(`${baseUrl}${input}`);
-    if (!response.ok) throw new Error("Pokemon not found!");
+    if (!response.ok) throw new Error("Pokémon not found!");
 
     const pokemon = await response.json();
 
-    // Display Pokemon details
+    // Save Pokémon data to localStorage for the details page
+    localStorage.setItem(
+      "selectedPokemon",
+      JSON.stringify({
+        name: pokemon.name,
+        id: pokemon.id,
+        types: pokemon.types.map((t) => t.type.name),
+        height: pokemon.height / 10,
+        weight: pokemon.weight / 10,
+        sprite: pokemon.sprites.front_default,
+      })
+    );
+
+    // Display Pokémon details on the search page
     container.innerHTML = `
       <h2>${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
       <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
       <p><strong>ID:</strong> ${pokemon.id}</p>
-      <p><strong>Type:</strong> ${pokemon.types.map(t => t.type.name).join(", ")}</p>
+      <p><strong>Type:</strong> ${pokemon.types.map((t) => t.type.name).join(", ")}</p>
       <p><strong>Height:</strong> ${pokemon.height / 10} m</p>
       <p><strong>Weight:</strong> ${pokemon.weight / 10} kg</p>
     `;
@@ -49,4 +62,3 @@ document.getElementById("pokemon-form").addEventListener("submit", async (event)
     container.innerHTML = `<p class="error">${error.message}</p>`;
   }
 });
-

@@ -1,0 +1,123 @@
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            background-color: grey;
+        }
+
+        .hero {
+            background: url('https://eskipaper.com/images/pokemon-backgrounds-10.jpg') no-repeat center center/cover;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 2.5em;
+        }
+
+        
+
+       @keyframes color-change {
+    0% {
+        background-color: blue;
+    }
+    33% {
+        background-color: green;
+    }
+    66% {
+        background-color: yellow;
+    }
+    100% {
+        background-color: blue; /* Loops back to the original color */
+    }
+}
+
+
+.details-container {
+    margin: 2px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: blue; /* Initial color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+
+    /* Add the animation */
+    animation: color-change 35s infinite; /* Duration: 5 seconds, repeats infinitely */
+}
+
+        
+
+        .details-container h1 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .details-container img {
+            max-width: 100%;
+            float: inline-end;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .details-container p,
+        .details-container ul {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        .details-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .details-container ul li {
+            text-align: left;
+        }
+
+        .btn-back {
+            display: block;
+            margin: 20px auto 0;
+            max-width: 200px;
+        }
+
+        /* Tablet Adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 200px;
+                font-size: 2em;
+            }
+
+            .details-container {
+                padding: 15px;
+            }
+
+            .details-container h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            .hero {
+                height: 150px;
+                font-size: 1.5em;
+            }
+
+            .details-container {
+                padding: 10px;
+            }
+
+            .details-container h1 {
+                font-size: 1.5em;
+            }
+
+            .details-container p,
+            .details-container ul {
+                font-size: 0.9em;
+            }
+
+            .btn-back {
+                font-size: 0.9em;
+            }
+        }

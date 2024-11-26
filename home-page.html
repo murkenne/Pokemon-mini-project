@@ -5,32 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="home-page.js" defer></script>
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="home-page.css">
     <title>Pokémon Mini Project</title>
 </head>
 <body>
     <!-- Navbar for intuitive navigation using Bootstrap Navbar and Dropdown menus -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="task-dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="details-page.html">Pokémon Details</a></li>
-                    <li class="nav-item"><a class="nav-link" href="search-page.html">Search Pokémon</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand bg-warning">
+    <div class="container">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="details-page.html">Pokémon Details</a></li>
+            <li class="nav-item"><a class="nav-link" href="search-page.html">Search Pokémon</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="hero">
+        <h1 class="display-4">Pokémon</h1>
+            <p class="lead">Your unofficial home of over 800 Pokémon</p>
+    </div>
 
     <!-- Jumbotron for a welcome message -->
-    <header class="jumbotron bg-primary text-white text-center p-5 mb-4">
+    <!--<header class="jumbotron bg-primary text-white text-center p-5 mb-4">
         <div class="container">
             <h1 class="display-4">Pokémon</h1>
             <p class="lead">Your unofficial home of over 800 Pokémon</p>
         </div>
-    </header>
+    </header>-->
+
 
     <!-- Dynamic Pokemon Images -->
     <div id="pokemon-container" class="d-flex flex-wrap justify-content-center gap-3">

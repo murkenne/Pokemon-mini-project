@@ -1,31 +1,46 @@
-// Function to fetch and display Pokémon details
-async function fetchPokemonDetails() {
-    const params = new URLSearchParams(window.location.search);
-    const pokemonIdOrName = params.get("id");
+// Fetch Pokémon details from localStorage
+const pokemonData = JSON.parse(localStorage.getItem("selectedPokemon"));
 
-    if (!pokemonIdOrName) {
-        document.querySelector(".details-container").innerHTML = "<p class='text-danger'>No Pokémon ID or name provided.</p>";
-        return;
-    }
+async function fetchAdditionalDetails() {
+  if (!pokemonData) {
+    document.querySelector(".details-container").innerHTML = `
+      <p class="text-danger">No Pokémon data found. Please search for a Pokémon first.</p>
+    `;
+    return;
+  }
 
-    try {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonIdOrName}`);
-        if (!response.ok) throw new Error("Pokémon not found!");
+  try {
+    // Fetch additional Pokémon data
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonData.name}`);
+    if (!response.ok) throw new Error("Failed to fetch additional Pokémon details");
 
-        const pokemon = await response.json();
+    const fullDetails = await response.json();
 
-        // Populate details on the page
-        document.getElementById("pokemon-name").textContent = pokemon.name.toUpperCase();
-        document.getElementById("pokemon-image").src = pokemon.sprites.front_default;
-        document.getElementById("pokemon-image").alt = pokemon.name;
-        document.getElementById("pokemon-id").textContent = `ID: ${pokemon.id}`;
-        document.getElementById("pokemon-type").textContent = `Type: ${pokemon.types.map(t => t.type.name).join(", ")}`;
-        document.getElementById("pokemon-height").textContent = `Height: ${pokemon.height}`;
-        document.getElementById("pokemon-weight").textContent = `Weight: ${pokemon.weight}`;
-    } catch (error) {
-        document.querySelector(".details-container").innerHTML = `<p class='text-danger'>${error.message}</p>`;
-    }
+    // Extract additional details
+    const abilities = fullDetails.abilities.map((ability) => ability.ability.name).join(", ");
+    const stats = fullDetails.stats.map((stat) => `<li>${stat.stat.name}: ${stat.base_stat}</li>`).join("");
+    const moves = fullDetails.moves.map((move) => move.move.name).slice(0, 10).join(", "); // Limit to 10 moves for brevity
+
+    // Display Pokémon details
+    document.querySelector(".details-container").innerHTML = `
+      <h1>${pokemonData.name.charAt(0).toUpperCase() + pokemonData.name.slice(1)}</h1>
+      <img src="${pokemonData.sprite}" alt="${pokemonData.name}" class="img-fluid">
+      <p><strong>ID:</strong> ${pokemonData.id}</p>
+      <p><strong>Type:</strong> ${pokemonData.types.join(", ")}</p>
+      <p><strong>Height:</strong> ${pokemonData.height} m</p>
+      <p><strong>Weight:</strong> ${pokemonData.weight} kg</p>
+      <p><strong>Abilities:</strong> ${abilities}</p>
+      <h3>Base Stats</h3>
+      <ul>${stats}</ul>
+      <h3>Top Moves</h3>
+      <p>${moves}</p>
+    `;
+  } catch (error) {
+    document.querySelector(".details-container").innerHTML = `
+      <p class="text-danger">${error.message}</p>
+    `;
+  }
 }
 
-// Call the function to fetch details on page load
-fetchPokemonDetails();
+// Fetch and display additional details on page load
+fetchAdditionalDetails();
